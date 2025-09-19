@@ -1,18 +1,13 @@
-/* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* --- New Theme: Midnight Blue --- */
+/* Dark BG:      #0a192f */
+/* Accent Blue:  #64ffda */
+/* Text Light:   #cbd5e1 */
+/* Text Dark:    #1e293b */
+/* Background:   #ffffff */
+/* --- --- --- --- --- --- --- --- */
 
-/* --- Root Variables (Color Palette) --- */
-:root {
-    --primary-color: #ffab40; /* Amber Accent */
-    --primary-hover: #ffc26a; /* Lighter Amber */
-    --dark-bg-start: #1a2238; /* Deep Indigo */
-    --dark-bg-end: #2a3a5e;   /* Lighter Indigo for gradient */
-    --dark-text: #1a2238;
-    --light-text: #f4f4f9;
-    --body-text: #4f5b7a;
-    --white: #ffffff;
-    --border-color: #e2e8f0;
-}
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 /* --- General Styles --- */
 html {
@@ -20,12 +15,12 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: var(--white);
-    color: var(--body-text);
+    background-color: #ffffff;
+    color: #1e293b;
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -39,15 +34,14 @@ section {
     padding: 0 20px;
 }
 
-h1, h2, h3 {
-    color: var(--dark-text);
-    font-weight: 700;
-}
-
 h2 {
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.5rem;
+    color: #1e293b;
+    border-bottom: 2px solid #64ffda;
+    display: inline-block;
+    padding-bottom: 10px;
 }
 
 /* --- Navigation Bar --- */
@@ -60,7 +54,6 @@ nav {
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
@@ -72,48 +65,47 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
     vertical-align: middle;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: var(--dark-text);
+    color: #1e293b;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: var(--primary-color);
+nav ul li a:hover,
+nav ul li a.active {
+    color: #64ffda;
 }
 
 nav ul li a.button {
-    border: 2px solid var(--dark-text);
-    padding: 8px 18px;
+    color: #64ffda;
+    border: 2px solid #64ffda;
     border-radius: 6px;
+    padding: 8px 18px;
 }
 
 nav ul li a.button:hover {
-    background-color: var(--dark-text);
-    color: var(--white);
+    background-color: rgba(100, 255, 218, 0.1);
 }
 
-/* --- Hero Section with Animated Gradient --- */
+/* --- Hero Section --- */
 .hero {
-    color: var(--light-text);
+    background: linear-gradient(-45deg, #0a192f, #1e293b, #0a192f);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #cbd5e1;
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
-    /* NEW: Animated Gradient */
-    background: linear-gradient(-45deg, var(--dark-bg-start), var(--dark-bg-end), #4a3a6a, #2a3a5e);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
 }
 
-/* NEW: Keyframes for the gradient animation */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -125,70 +117,53 @@ nav ul li a.button:hover {
 }
 
 .hero-title {
-    font-size: 4.5rem; /* Slightly larger */
-    margin: 0;
+    font-size: 4rem;
     font-weight: 700;
-    /* NEW: Gradient Text Effect */
-    background: -webkit-linear-gradient(45deg, var(--primary-hover), var(--primary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    margin: 0;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--light-text); /* Changed to light text for better contrast */
-    margin: 10px 0 20px 0;
-    font-weight: 400;
+    color: #64ffda;
+    margin: 10px 0;
 }
 
 .hero-description {
     font-size: 1.1rem;
     max-width: 600px;
-    margin: 0 auto 30px auto;
+    margin: 20px auto 30px auto;
 }
 
-.button {
-    display: inline-block;
-    padding: 12px 28px;
-    background-color: var(--primary-color);
-    color: var(--dark-text);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 700;
-    border: 2px solid var(--primary-color);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for buttons */
+/* Social Media Links */
+.social-links {
+    text-align: center;
+    margin-top: 30px;
 }
 
-.button:hover {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
-    transform: translateY(-3px) scale(1.05); /* NEW: Enhanced hover effect */
-    box-shadow: 0 8px 25px rgba(255, 171, 64, 0.3); /* Glow effect */
+.social-links a {
+    color: #cbd5e1;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: color 0.3s, transform 0.3s;
 }
 
-/* --- About Section --- */
-.about-card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.social-links a:hover {
+    color: #64ffda;
+    transform: translateY(-3px);
 }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
+#contact .social-links a {
+    color: #1e293b;
 }
 
 /* --- Cards --- */
 .card {
-    background-color: var(--white);
+    background-color: #ffffff;
     border-radius: 12px;
     padding: 30px;
     margin-bottom: 30px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e2e8f0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -197,44 +172,29 @@ nav ul li a.button:hover {
     box-shadow: 0 8px 25px rgba(26, 34, 56, 0.1);
 }
 
-/* --- Projects Section --- */
-.project-links {
-    margin-top: 20px;
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: transparent;
+    color: #64ffda;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 2px solid #64ffda;
+    transition: all 0.3s ease;
 }
 
-.project-links .button {
-    margin-right: 10px;
-}
-
-/* --- Contact Section --- */
-.contact-text {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.social-links {
-    text-align: center;
-}
-
-.social-links a {
-    color: var(--dark-text);
-    font-size: 2rem;
-    margin: 0 20px;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-links a:hover {
-    color: var(--primary-color);
-    transform: translateY(-5px) scale(1.1); /* NEW: Enhanced social icon hover */
+.button:hover {
+    background-color: rgba(100, 255, 218, 0.1);
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: var(--dark-bg-start);
-    color: var(--light-text);
+    background-color: #0a192f;
+    color: #cbd5e1;
     margin-top: 80px;
 }
 
@@ -243,18 +203,13 @@ footer {
     body {
         font-size: 16px;
     }
-
+    
     .hero-title {
         font-size: 2.5rem;
     }
 
     .hero-subtitle {
         font-size: 1.2rem;
-    }
-
-    .about-card {
-        flex-direction: column;
-        text-align: center;
     }
 
     nav ul li {
