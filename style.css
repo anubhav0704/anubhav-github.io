@@ -5,7 +5,8 @@
 :root {
     --primary-color: #ffab40; /* Amber Accent */
     --primary-hover: #ffc26a; /* Lighter Amber */
-    --dark-bg: #1a2238;       /* Deep Indigo */
+    --dark-bg-start: #1a2238; /* Deep Indigo */
+    --dark-bg-end: #2a3a5e;   /* Lighter Indigo for gradient */
     --dark-text: #1a2238;
     --light-text: #f4f4f9;
     --body-text: #4f5b7a;
@@ -29,7 +30,7 @@ body {
 }
 
 section {
-    scroll-margin-top: 90px; /* Offset for sticky nav */
+    scroll-margin-top: 90px;
 }
 
 .container {
@@ -97,9 +98,8 @@ nav ul li a.button:hover {
     color: var(--white);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section with Animated Gradient --- */
 .hero {
-    background-color: var(--dark-bg);
     color: var(--light-text);
     min-height: 80vh;
     display: flex;
@@ -107,6 +107,17 @@ nav ul li a.button:hover {
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
+    /* NEW: Animated Gradient */
+    background: linear-gradient(-45deg, var(--dark-bg-start), var(--dark-bg-end), #4a3a6a, #2a3a5e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* NEW: Keyframes for the gradient animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero-content {
@@ -114,14 +125,18 @@ nav ul li a.button:hover {
 }
 
 .hero-title {
-    font-size: 4rem;
-    color: var(--white);
+    font-size: 4.5rem; /* Slightly larger */
     margin: 0;
+    font-weight: 700;
+    /* NEW: Gradient Text Effect */
+    background: -webkit-linear-gradient(45deg, var(--primary-hover), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--light-text); /* Changed to light text for better contrast */
     margin: 10px 0 20px 0;
     font-weight: 400;
 }
@@ -142,13 +157,14 @@ nav ul li a.button:hover {
     font-weight: 700;
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for buttons */
 }
 
 .button:hover {
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-3px) scale(1.05); /* NEW: Enhanced hover effect */
+    box-shadow: 0 8px 25px rgba(255, 171, 64, 0.3); /* Glow effect */
 }
 
 /* --- About Section --- */
@@ -210,14 +226,14 @@ nav ul li a.button:hover {
 
 .social-links a:hover {
     color: var(--primary-color);
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.1); /* NEW: Enhanced social icon hover */
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: var(--dark-bg);
+    background-color: var(--dark-bg-start);
     color: var(--light-text);
     margin-top: 80px;
 }
