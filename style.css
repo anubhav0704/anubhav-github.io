@@ -1,11 +1,11 @@
-/* --- New Theme: Aurora --- */
-/* Purple:       #8a3ffc */
-/* Pink:         #ff7eb6 */
-/* Dark BG:      #161616 */
-/* Text Light:   #f4f4f4 */
-/* Text Dark:    #161616 */
-/* Background:   #ffffff */
-/* --- --- --- --- --- --- --- */
+/* --- New Theme: Solar Flare --- */
+/* Accent Start: #ff8c00 (Dark Orange) */
+/* Accent End:   #ffc107 (Amber) */
+/* Dark BG:      #121212 */
+/* Light BG:     #1e1e1e */
+/* Text Light:   #e0e0e0 */
+/* Text Dark:    #ffffff */
+/* --- --- --- --- --- --- --- --- */
 
 /* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
@@ -18,8 +18,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #ffffff;
-    color: #393939;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
     font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -40,33 +40,19 @@ h2 {
     margin-bottom: 50px;
     font-size: 2.8rem;
     font-weight: 700;
-    color: #161616;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #8a3ffc, #ff7eb6);
+    color: #ffffff;
 }
 
 /* --- Navigation Bar --- */
 nav {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent dark */
     backdrop-filter: blur(12px);
     padding: 15px 0;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #333;
 }
 
 nav ul {
@@ -83,7 +69,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #161616;
+    color: #e0e0e0;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
@@ -91,29 +77,32 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #8a3ffc;
+    background: linear-gradient(90deg, #ff8c00, #ffc107);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 nav ul li a.button {
-    color: #8a3ffc;
-    border: 2px solid #8a3ffc;
-    border-radius: 50px; /* Pill shape */
+    color: #ff8c00;
+    border: 2px solid #ff8c00;
+    border-radius: 50px;
     padding: 8px 20px;
     transition: all 0.3s ease;
+    -webkit-text-fill-color: #ff8c00; /* Fix for gradient override */
 }
 
 nav ul li a.button:hover {
-    background-color: #8a3ffc;
-    color: #ffffff;
-    box-shadow: 0 0 15px rgba(138, 63, 252, 0.5);
+    background: linear-gradient(90deg, #ff8c00, #ffc107);
+    color: #121212;
+    -webkit-text-fill-color: #121212; /* Fix for gradient override */
+    border-color: #ffc107;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
 }
 
 /* --- Hero Section --- */
 .hero {
-    background: linear-gradient(-45deg, #161616, #2c2c2c, #161616);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: #f4f4f4;
+    background-color: #121212;
+    color: #e0e0e0;
     min-height: 85vh;
     display: flex;
     align-items: center;
@@ -122,12 +111,6 @@ nav ul li a.button:hover {
     padding: 40px 20px;
     position: relative;
     overflow: hidden;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 .hero-content {
@@ -144,7 +127,7 @@ nav ul li a.button:hover {
 
 .hero-subtitle {
     font-size: 1.8rem;
-    background: linear-gradient(90deg, #8a3ffc, #ff7eb6);
+    background: linear-gradient(90deg, #ff8c00, #ffc107);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 10px 0;
@@ -164,66 +147,68 @@ nav ul li a.button:hover {
 }
 
 .social-links a {
-    color: #f4f4f4;
+    color: #e0e0e0;
     font-size: 1.8rem;
     margin: 0 15px;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-    color: #ff7eb6; /* Pink hover for social links */
+    color: #ffc107;
     transform: translateY(-5px) scale(1.1);
 }
 
 #contact .social-links a {
-    color: #161616;
-}
-#contact .social-links a:hover {
-    color: #8a3ffc;
+    color: #e0e0e0;
 }
 
 /* --- Cards --- */
 .card {
-    background-color: #ffffff;
+    background-color: #1e1e1e; /* Lighter dark for cards */
     border-radius: 16px;
     padding: 35px;
     margin-bottom: 30px;
-    border: 1px solid #e0e0e0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: #ff8c00;
+}
+
+.card h3 {
+    color: #ffffff;
 }
 
 /* --- Buttons --- */
 .button {
     display: inline-block;
     padding: 14px 32px;
-    background: linear-gradient(90deg, #8a3ffc, #ff7eb6);
-    color: #ffffff;
+    background: linear-gradient(90deg, #ff8c00, #ffc107);
+    color: #121212;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
     border: none;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(138, 63, 252, 0.4);
+    box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4);
 }
 
 .button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(138, 63, 252, 0.6);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6);
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 25px;
-    background-color: #161616;
-    color: #f4f4f4;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
     margin-top: 80px;
+    border-top: 1px solid #333;
 }
 
 /* --- Responsive Styles --- */
