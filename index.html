@@ -11,16 +11,16 @@
 
     <nav>
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="achievements.html">Achievements</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="Anubhav_Resume_Final.pdf" class="button" target="_blank">Resume</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">ANUBHAV KUMAR</h1>
             <p class="hero-subtitle">Aspiring Computer Science Engineer</p>
@@ -35,12 +35,73 @@
         </div>
     </header>
 
-    <div class="container">
-        <h2>About This Portfolio</h2>
+    <section id="projects" class="container">
+        <h2>My Projects</h2>
         <div class="card">
-            <p>Welcome to my personal portfolio. This site showcases my projects, skills, and professional achievements. Please use the navigation bar to explore the different sections.</p>
+            <h3>Renewable Energy Predictor</h3>
+            <p><strong>Tools Used:</strong> Python, Scikit-learn, Pandas, Streamlit</p>
+            <ul>
+                <li>Engineered a Random Forest forecasting model to predict solar energy output with over 85% R² accuracy.</li>
+            </ul>
+            <a href="#" class="button" target="_blank">View Code</a>
         </div>
-    </div>
+        <div class="card">
+            <h3>Process Scheduler Simulator</h3>
+            <p><strong>Tools Used:</strong> Python, Matplotlib</p>
+            <ul>
+                <li>Architected a simulator for CPU scheduling algorithms including FCFS, SJF, Priority, and Round Robin.</li>
+            </ul>
+            <a href="#" class="button" target="_blank">View Code</a>
+        </div>
+    </section>
 
-</body>
-</html>
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="card">
+            <h3>Hello, I'm Anubhav Kumar</h3>
+            <p>I am an Aspiring Computer Science Engineer with a deep passion for technology, particularly in AI and Machine Learning.</p>
+        </div>
+        <div class="card">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li><strong>Languages:</strong> C, C++, Python, Java</li>
+                <li><strong>ML/Data Tools:</strong> NumPy, Pandas, scikit-learn</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="achievements" class="container">
+        <h2>Achievements & Certifications</h2>
+        <div class="card">
+            <h3>Key Achievements</h3>
+            <ul>
+                <li>Hackathon Finalist - ML Innovation Prototype (2024)</li>
+                <li>2nd Runner Up (Team) - 24-hour Hackathon (2024)</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Certifications</h3>
+            <ul>
+                <li>Machine Learning Made Easy</li>
+                <li>Cloud Computing NPTEL</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact Me</h2>
+        <div class="card">
+            <p>I'm currently seeking new opportunities. Feel free to reach out!</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:anubhavkr0407@gmail.com">anubhavkr0407@gmail.com</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/anubhav0704" target="_blank">anubhav0704</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(
