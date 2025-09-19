@@ -19,8 +19,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
     font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -41,56 +41,67 @@ h2 {
     margin-bottom: 50px;
     font-size: 2.8rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-dark);
 }
 
-/* --- NEW: Header/Navigation Bar Styles --- */
-nav {
-    padding: 20px 0;
-    position: fixed; /* Changed from sticky to fixed */
+/* --- NEW: Navbar & Hamburger Menu Styles --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* Increased padding for better desktop feel */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     transition: background-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+    box-sizing: border-box; /* Include padding in width */
 }
 
-/* Style for when the page is scrolled */
-nav.scrolled {
-    background-color: rgba(30, 30, 30, 0.7); /* Semi-transparent dark */
+/* Navbar scrolled state */
+.navbar.scrolled {
+    background-color: rgba(30, 30, 30, 0.7);
     backdrop-filter: blur(12px);
-    padding: 15px 0;
+    padding: 15px 40px; /* Adjusted padding on scroll */
     border-bottom: 1px solid #333;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    vertical-align: middle;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
+.nav-brand {
+    color: var(--text-dark);
+    font-size: 1.8rem;
+    font-weight: 700;
     background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-nav ul li a.button {
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links li a.button {
     color: var(--accent-start);
     border: 2px solid var(--accent-start);
     border-radius: 50px;
@@ -99,50 +110,288 @@ nav ul li a.button {
     -webkit-text-fill-color: var(--accent-start);
 }
 
-nav ul li a.button:hover {
+.nav-links li a.button:hover {
     background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    color: #121212;
-    -webkit-text-fill-color: #121212;
+    color: var(--dark-bg);
+    -webkit-text-fill-color: var(--dark-bg);
     border-color: var(--accent-end);
     box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
 }
 
+/* Hamburger menu icon */
+.hamburger {
+    display: none; /* Hidden by default on larger screens */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger animation to 'X' */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
 /* --- Hero Section --- */
 .hero {
-    background-color: #121212;
-    color: #e0e0e0;
-    min-height: 100vh; /* Full screen height */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 40px 20px;
+    padding: 100px 20px 40px 20px; /* Added top padding to clear fixed nav */
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
-/* ... (rest of your CSS remains the same) ... */
-.hero-content { z-index: 2; }
-.hero-title { font-size: 4.5rem; font-weight: 700; color: #ffffff; margin: 0; }
-.hero-subtitle { font-size: 1.8rem; background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 10px 0; font-weight: 500; }
-.hero-description { font-size: 1.1rem; max-width: 600px; margin: 20px auto 30px auto; }
-.social-links { text-align: center; margin-top: 30px; }
-.social-links a { color: #e0e0e0; font-size: 1.8rem; margin: 0 15px; transition: color 0.3s, transform 0.3s; }
-.social-links a:hover { color: var(--accent-end); transform: translateY(-5px) scale(1.1); }
-#contact .social-links a { color: #e0e0e0; }
-.card { background-color: #1e1e1e; border-radius: 16px; padding: 35px; margin-bottom: 30px; border: 1px solid #333; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: var(--accent-start); }
-.card h3 { color: #ffffff; }
-.button { display: inline-block; padding: 14px 32px; background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); color: #121212; text-decoration: none; border-radius: 50px; font-weight: 700; border: none; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4); }
-.button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6); }
-footer { text-align: center; padding: 25px; background-color: #1e1e1e; color: #e0e0e0; margin-top: 80px; border-top: 1px solid #333; }
-.hero::before { content: ''; position: absolute; left: var(--mouse-x, 50%); top: var(--mouse-y, 50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0) 70%); border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.2s ease-out; pointer-events: none; z-index: 1; }
-.hidden { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.show { opacity: 1; transform: translateY(0); }
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
 
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 20px auto 30px auto;
+}
+
+/* Social Media Links */
+.social-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-end);
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* --- Cards --- */
+.card {
+    background-color: var(--light-bg);
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: var(--accent-start);
+}
+
+.card h3 {
+    color: var(--text-dark);
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.card li::before {
+    content: "•"; /* Bullet point */
+    color: var(--accent-start);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    color: var(--dark-bg);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4);
+}
+
+.button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--light-bg);
+    color: var(--text-light);
+    margin-top: 80px;
+    border-top: 1px solid #333;
+}
+
+/* --- JavaScript Effects Styles --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Styles (Mobile First) --- */
 @media (max-width: 768px) {
-    body { font-size: 16px; }
-    .hero-title { font-size: 2.8rem; }
-    .hero-subtitle { font-size: 1.3rem; }
-    nav ul li { display: block; margin: 15px 0; }
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .navbar.scrolled {
+        padding: 10px 20px;
+    }
+
+    .nav-brand {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below the navbar */
+        left: 0;
+        background-color: rgba(30, 30, 30, 0.95); /* Darker background for menu */
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        padding: 20px 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-10px); /* Slightly slide in */
+        opacity: 0;
+        pointer-events: none; /* Don't interfere with clicks when hidden */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav links when active */
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block; /* Make links full width for easier tapping */
+        padding: 10px 0;
+        color: var(--text-light); /* Ensure text color is visible */
+    }
+
+    .nav-links li a.button {
+        display: inline-block; /* Keep button styled as a button */
+        margin-top: 10px;
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon on mobile */
+    }
+
+    .hero-title {
+        font-size: 2.5rem; /* Smaller title for mobile */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem; /* Smaller subtitle for mobile */
+    }
+
+    .hero {
+        padding-top: 80px; /* Adjust hero top padding for mobile nav */
+        min-height: 80vh; /* Make hero section a bit shorter on mobile */
+    }
+
+    .container {
+        margin: 50px auto;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
 }
