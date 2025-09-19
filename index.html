@@ -39,14 +39,32 @@
         <h2 class="hidden">My Projects</h2>
         <div class="card hidden">
             <h3>Renewable Energy Predictor</h3>
-            <p>Developed a Random Forest-based forecasting model to predict solar and wind energy output with 85%+ R² accuracy, deployed via an interactive Streamlit dashboard.</p>
+            <p>Developed a Random Forest-based forecasting model to predict solar and wind energy output with 85%+ R² accuracy, deployed via an interactive Streamlit dashboard for real-time user inputs and visualizations.</p>
             <p><strong>Tools Used:</strong> Python, Scikit-learn, Pandas, Streamlit</p>
             <a href="#" class="button" target="_blank">View Code</a>
         </div>
         <div class="card hidden">
             <h3>Process Scheduler Simulator</h3>
-            <p>Built a Python simulator for CPU scheduling algorithms (FCFS, SJF, etc.) with Gantt chart visualizations and automated performance metric calculations.</p>
+            <p>Built a Python simulator implementing FCFS, SJF (preemptive & non-preemptive), Priority, and Round Robin scheduling with Gantt chart visualizations and automated calculation of key performance metrics.</p>
              <p><strong>Tools Used:</strong> Python, Matplotlib</p>
+            <a href="#" class="button" target="_blank">View Code</a>
+        </div>
+        <div class="card hidden">
+            <h3>AI Chatbot Moderator</h3>
+            <p>Designed an NLP-powered chatbot that leverages regex-based text filtering to identify and block offensive, abusive, or spam content in simulated group chat interactions.</p>
+            <p><strong>Tools Used:</strong> Python, NLP</p>
+            <a href="#" class="button" target="_blank">View Code</a>
+        </div>
+        <div class="card hidden">
+            <h3>News Aggregator</h3>
+            <p>Created a static news reader UI using HTML/CSS, featuring a structured layout for headlines, summaries, and links, serving as a prototype for future API-based dynamic news platforms.</p>
+            <p><strong>Tools Used:</strong> HTML, CSS</p>
+            <a href="#" class="button" target="_blank">View Code</a>
+        </div>
+        <div class="card hidden">
+            <h3>Hall Effect Sensors Simulation</h3>
+            <p>Modeled the Hall Effect principle in Python to classify semiconductors based on magnetic field interactions, simulating current flow, voltage response, and material properties.</p>
+            <p><strong>Tools Used:</strong> Python, NumPy</p>
             <a href="#" class="button" target="_blank">View Code</a>
         </div>
     </section>
@@ -55,7 +73,17 @@
         <h2 class="hidden">About Me</h2>
         <div class="card hidden">
             <h3>Hello, I'm Anubhav Kumar</h3>
-            <p>I am an Aspiring Computer Science Engineer currently pursuing my Bachelor's degree at Lovely Professional University. My academic foundation is built on core subjects like Data Structures, Algorithms, and AI. Beyond the classroom, I am proactive in the tech community, where I have experience leading student tech initiatives and managing hackathons.</p>
+            <p>I am an Aspiring Computer Science Engineer currently pursuing my Bachelor's degree at Lovely Professional University. I have a deep passion for technology, particularly in the fields of Artificial Intelligence and Machine Learning, and I enjoy applying my problem-solving skills to build practical and efficient software solutions.</p>
+            <p>My academic foundation is built on core computer science subjects, including Data Structures, Algorithms, Operating Systems, and OOPS. Beyond the classroom, I am proactive in the tech community, where I have experience leading student tech initiatives and managing hackathons & bootcamps. These roles have sharpened my technical and leadership skills, preparing me for a dynamic professional environment.</p>
+        </div>
+        <div class="card hidden">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li><strong>Programming Languages:</strong> C, C++, Python, Java</li>
+                <li><strong>Frontend Development:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>ML/Data Tools:</strong> NumPy, Pandas, scikit-learn, Random Forest, XGBoost, Matplotlib</li>
+                <li><strong>Core CS Concepts:</strong> Data Structures & Algorithms, OOP</li>
+            </ul>
         </div>
     </section>
 
@@ -66,6 +94,8 @@
             <ul>
                 <li>Leading student tech initiatives and managing hackathons & bootcamps.</li>
                 <li>Hackathon Finalist - ML Innovation Prototype (2024).</li>
+                <li>2nd Runner Up (Team) - 24-hour Hackathon (2024).</li>
+                <li>Runner-up - Inter-school Badminton & Kho-Kho competitions.</li>
             </ul>
         </div>
         <div class="card hidden">
@@ -73,6 +103,9 @@
             <ul>
                 <li>Machine Learning Made Easy</li>
                 <li>Cloud Computing | NPTEL</li>
+                <li>Python:- Basic to Advance | Udemy</li>
+                <li>Dynamic Communication Skill for Career Success</li>
+            ... (and other certifications)
             </ul>
         </div>
     </section>
@@ -102,7 +135,7 @@
             });
         });
 
-        // --- NEW: CURSOR SPOTLIGHT EFFECT IN HERO SECTION ---
+        // --- CURSOR SPOTLIGHT EFFECT IN HERO SECTION ---
         const heroSection = document.querySelector('.hero');
         heroSection.addEventListener('mousemove', e => {
             const rect = heroSection.getBoundingClientRect();
@@ -112,7 +145,7 @@
             heroSection.style.setProperty('--mouse-y', `${y}px`);
         });
 
-        // --- NEW: FADE-IN ANIMATIONS ON SCROLL ---
+        // --- FADE-IN ANIMATIONS ON SCROLL ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
