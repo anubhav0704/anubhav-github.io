@@ -1,10 +1,17 @@
-/* --- Theme: Modern Dark --- */
-/* (Your existing color variables) */
-
 /* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* --- General Styles --- */
+/* --- General & Root Styles --- */
+:root {
+    --primary-color: #0d6efd; /* Classic Blue */
+    --primary-hover: #0b5ed7; /* Darker Blue */
+    --dark-text: #212529;
+    --body-text: #495057;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #dee2e6;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -12,28 +19,31 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #ffffff;
-    color: #1e293b;
+    background-color: var(--white);
+    color: var(--body-text);
     font-size: 18px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
 }
 
 section {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 80px; /* Offset for sticky nav */
 }
 
 .container {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 0 20px; /* Changed padding for better responsiveness */
+    max-width: 960px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--dark-text);
+    font-weight: 700;
 }
 
 h2 {
-    color: #1e293b;
-    border-bottom: 2px solid #3b82f6;
-    padding-bottom: 10px;
-    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
 }
 
 /* --- Navigation Bar --- */
@@ -57,39 +67,23 @@ nav ul {
 
 nav ul li {
     display: inline;
-    vertical-align: middle;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #1e293b;
+    color: var(--dark-text);
     text-decoration: none;
-    padding: 8px 15px;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    color: #3b82f6;
-}
-
-nav ul li a.button {
-    color: #3b82f6;
-    border: 2px solid #3b82f6;
-    border-radius: 6px;
-    padding: 8px 18px;
-}
-
-nav ul li a.button:hover {
-    background-color: #3b82f6;
-    color: #ffffff;
+nav ul li a:hover {
+    color: var(--primary-color);
 }
 
 /* --- Hero Section --- */
 .hero {
-    background-color: #0a192f;
-    color: #cbd5e1;
+    background-color: var(--light-bg);
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -104,113 +98,135 @@ nav ul li a.button:hover {
 
 .hero-title {
     font-size: 4rem;
-    font-weight: 700;
-    color: #ffffff;
     margin: 0;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #3b82f6;
-    margin: 10px 0;
+    color: var(--primary-color);
+    margin: 10px 0 20px 0;
+    font-weight: 400;
 }
 
 .hero-description {
     font-size: 1.1rem;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 0 auto 30px auto;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* --- About Section --- */
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* --- Cards --- */
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Projects Section --- */
+.project-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+.project-links {
+    margin-top: 20px;
+}
+
+.project-links .button {
+    margin-right: 10px;
+}
+
+/* --- Contact Section --- */
+.contact-text {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 .social-links {
-    margin-top: 30px;
+    text-align: center;
 }
 
 .social-links a {
-    color: #cbd5e1;
-    font-size: 1.5rem;
-    margin: 0 15px;
+    color: var(--dark-text);
+    font-size: 2rem;
+    margin: 0 20px;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-    color: #3b82f6;
+    color: var(--primary-color);
     transform: translateY(-3px);
 }
 
-.card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-    margin-bottom: 30px;
-    padding: 30px;
-    border: 1px solid #e2e8f0;
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--light-bg);
+    border-top: 1px solid var(--border-color);
+    margin-top: 80px;
 }
 
-.card h3 {
-    margin-top: 0;
-    color: #1e293b;
-}
-
-.card ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.card li {
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.card li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #3b82f6;
-}
-
-/* --- NEW: RESPONSIVE STYLES --- */
+/* --- Responsive Styles --- */
 @media (max-width: 768px) {
     body {
-        font-size: 16px; /* Adjust base font size for mobile */
+        font-size: 16px;
     }
     
-    section {
-        scroll-margin-top: 60px; /* Adjust scroll padding for smaller nav bar */
-    }
-
-    .hero {
-        min-height: 60vh; /* Make hero section shorter on mobile */
-        padding: 60px 20px;
-    }
-
     .hero-title {
-        font-size: 2.5rem; /* Decrease title font size */
+        font-size: 2.5rem;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem; /* Decrease subtitle font size */
+        font-size: 1.2rem;
     }
 
-    nav {
-        padding: 10px 0;
+    .about-card {
+        flex-direction: column;
+        text-align: center;
     }
 
     nav ul li {
-        display: block; /* Stack navigation links vertically */
-        margin: 10px 0;
-    }
-
-    nav ul li a.button {
-        display: inline-block; /* Ensure button doesn't take full width */
-        margin-left: 0;
-    }
-
-    .container {
-        margin: 30px auto; /* Reduce top/bottom margin */
-    }
-
-    .card {
-        padding: 20px; /* Reduce card padding */
+        display: block;
+        margin: 15px 0;
     }
 }
