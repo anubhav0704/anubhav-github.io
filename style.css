@@ -1,14 +1,15 @@
 /* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-/* --- Root Variables --- */
+/* --- NEW THEME: Cyber Glow --- */
 :root {
-    --accent-start: #ff8c00;
-    --accent-end: #ffc107;
-    --dark-bg: #121212;
-    --light-bg: #1e1e1e;
-    --text-light: #e0e0e0;
-    --text-dark: #ffffff;
+    --accent-start: #00c6ff; /* Bright Cyan */
+    --accent-end: #0072ff;   /* Electric Blue */
+    --dark-bg: #0d1117;     /* GitHub Dark-Mode Black */
+    --light-bg: #161b22;     /* GitHub Dark-Mode Grey */
+    --text-light: #c9d1d9;   /* Light Text */
+    --text-dark: #f0f6fc;    /* White Text */
+    --border-color: #30363d;
 }
 
 /* --- General Styles --- */
@@ -22,7 +23,7 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-light);
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -44,36 +45,32 @@ h2 {
     color: var(--text-dark);
 }
 
-/* --- NEW: Navbar & Hamburger Menu Styles --- */
+/* --- Navbar & Hamburger Menu Styles --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px; /* Increased padding for better desktop feel */
+    padding: 20px 40px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     transition: background-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
-    box-sizing: border-box; /* Include padding in width */
+    box-sizing: border-box;
 }
 
-/* Navbar scrolled state */
 .navbar.scrolled {
-    background-color: rgba(30, 30, 30, 0.7);
+    background-color: rgba(22, 27, 34, 0.7);
     backdrop-filter: blur(12px);
-    padding: 15px 40px; /* Adjusted padding on scroll */
-    border-bottom: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 15px 40px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .nav-brand {
-    color: var(--text-dark);
     font-size: 1.8rem;
     font-weight: 700;
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-dark);
 }
 
 .nav-links {
@@ -96,9 +93,7 @@ h2 {
 }
 
 .nav-links li a:hover {
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-start);
 }
 
 .nav-links li a.button {
@@ -107,20 +102,17 @@ h2 {
     border-radius: 50px;
     padding: 8px 20px;
     transition: all 0.3s ease;
-    -webkit-text-fill-color: var(--accent-start);
 }
 
 .nav-links li a.button:hover {
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    background-color: var(--accent-start);
     color: var(--dark-bg);
-    -webkit-text-fill-color: var(--dark-bg);
-    border-color: var(--accent-end);
-    box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
 }
 
 /* Hamburger menu icon */
 .hamburger {
-    display: none; /* Hidden by default on larger screens */
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -140,16 +132,9 @@ h2 {
     transition: all 0.3s ease-in-out;
 }
 
-/* Hamburger animation to 'X' */
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
-.hamburger.active .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-}
+.hamburger.active .bar:nth-child(2) { opacity: 0; }
+.hamburger.active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+.hamburger.active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
 /* --- Hero Section --- */
 .hero {
@@ -160,7 +145,7 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 100px 20px 40px 20px; /* Added top padding to clear fixed nav */
+    padding: 100px 20px 40px 20px;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
@@ -174,15 +159,15 @@ h2 {
 .hero-title {
     font-size: 4.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin: 0;
 }
 
 .hero-subtitle {
     font-size: 1.8rem;
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-dark);
     margin: 10px 0;
     font-weight: 500;
 }
@@ -207,17 +192,18 @@ h2 {
 }
 
 .social-links a:hover {
-    color: var(--accent-end);
+    color: var(--accent-start);
     transform: translateY(-5px) scale(1.1);
 }
 
-/* --- Cards --- */
+/* --- Cards (Glassmorphism) --- */
 .card {
-    background-color: var(--light-bg);
+    background-color: rgba(22, 27, 34, 0.7); /* Semi-transparent */
+    backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 35px;
     margin-bottom: 30px;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
 }
 
@@ -243,14 +229,13 @@ h2 {
 }
 
 .card li::before {
-    content: "•"; /* Bullet point */
+    content: "▹";
     color: var(--accent-start);
     position: absolute;
     left: 0;
     font-size: 1.2em;
     line-height: 1;
 }
-
 
 /* --- Buttons --- */
 .button {
@@ -263,12 +248,12 @@ h2 {
     font-weight: 700;
     border: none;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.3);
 }
 
 .button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 198, 255, 0.5);
 }
 
 /* --- Footer --- */
@@ -278,7 +263,7 @@ footer {
     background-color: var(--light-bg);
     color: var(--text-light);
     margin-top: 80px;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--border-color);
 }
 
 /* --- JavaScript Effects Styles --- */
@@ -287,9 +272,9 @@ footer {
     position: absolute;
     left: var(--mouse-x, 50%);
     top: var(--mouse-y, 50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0) 70%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0) 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.2s ease-out;
@@ -323,26 +308,26 @@ footer {
     }
 
     .nav-links {
-        display: none; /* Hide nav links by default on mobile */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 100%; /* Position below the navbar */
+        top: 100%;
         left: 0;
-        background-color: rgba(30, 30, 30, 0.95); /* Darker background for menu */
+        background-color: rgba(22, 27, 34, 0.95);
         backdrop-filter: blur(15px);
         box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         padding: 20px 0;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         transition: all 0.3s ease-in-out;
-        transform: translateY(-10px); /* Slightly slide in */
+        transform: translateY(-10px);
         opacity: 0;
-        pointer-events: none; /* Don't interfere with clicks when hidden */
+        pointer-events: none;
     }
 
     .nav-links.active {
-        display: flex; /* Show nav links when active */
+        display: flex;
         transform: translateY(0);
         opacity: 1;
         pointer-events: all;
@@ -355,31 +340,31 @@ footer {
     }
 
     .nav-links li a {
-        display: block; /* Make links full width for easier tapping */
+        display: block;
         padding: 10px 0;
-        color: var(--text-light); /* Ensure text color is visible */
+        color: var(--text-light);
     }
 
     .nav-links li a.button {
-        display: inline-block; /* Keep button styled as a button */
+        display: inline-block;
         margin-top: 10px;
     }
 
     .hamburger {
-        display: flex; /* Show hamburger icon on mobile */
+        display: flex;
     }
 
     .hero-title {
-        font-size: 2.5rem; /* Smaller title for mobile */
+        font-size: 2.5rem;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem; /* Smaller subtitle for mobile */
+        font-size: 1.2rem;
     }
 
     .hero {
-        padding-top: 80px; /* Adjust hero top padding for mobile nav */
-        min-height: 80vh; /* Make hero section a bit shorter on mobile */
+        padding-top: 80px;
+        min-height: 80vh;
     }
 
     .container {
