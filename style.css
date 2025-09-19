@@ -1,14 +1,15 @@
-/* --- New Theme: Solar Flare --- */
-/* Accent Start: #ff8c00 (Dark Orange) */
-/* Accent End:   #ffc107 (Amber) */
-/* Dark BG:      #121212 */
-/* Light BG:     #1e1e1e */
-/* Text Light:   #e0e0e0 */
-/* Text Dark:    #ffffff */
-/* --- --- --- --- --- --- --- --- */
-
 /* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* --- Root Variables --- */
+:root {
+    --accent-start: #ff8c00;
+    --accent-end: #ffc107;
+    --dark-bg: #121212;
+    --light-bg: #1e1e1e;
+    --text-light: #e0e0e0;
+    --text-dark: #ffffff;
+}
 
 /* --- General Styles --- */
 html {
@@ -18,8 +19,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    background-color: #121212;
+    color: #e0e0e0;
     font-size: 18px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -43,16 +44,23 @@ h2 {
     color: #ffffff;
 }
 
-/* --- Navigation Bar --- */
+/* --- NEW: Header/Navigation Bar Styles --- */
 nav {
-    background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent dark */
-    backdrop-filter: blur(12px);
-    padding: 15px 0;
-    position: sticky;
+    padding: 20px 0;
+    position: fixed; /* Changed from sticky to fixed */
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+}
+
+/* Style for when the page is scrolled */
+nav.scrolled {
+    background-color: rgba(30, 30, 30, 0.7); /* Semi-transparent dark */
+    backdrop-filter: blur(12px);
+    padding: 15px 0;
     border-bottom: 1px solid #333;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
 nav ul {
@@ -77,25 +85,25 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    background: linear-gradient(90deg, #ff8c00, #ffc107);
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 nav ul li a.button {
-    color: #ff8c00;
-    border: 2px solid #ff8c00;
+    color: var(--accent-start);
+    border: 2px solid var(--accent-start);
     border-radius: 50px;
     padding: 8px 20px;
     transition: all 0.3s ease;
-    -webkit-text-fill-color: #ff8c00; /* Fix for gradient override */
+    -webkit-text-fill-color: var(--accent-start);
 }
 
 nav ul li a.button:hover {
-    background: linear-gradient(90deg, #ff8c00, #ffc107);
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
     color: #121212;
-    -webkit-text-fill-color: #121212; /* Fix for gradient override */
-    border-color: #ffc107;
+    -webkit-text-fill-color: #121212;
+    border-color: var(--accent-end);
     box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
 }
 
@@ -103,7 +111,7 @@ nav ul li a.button:hover {
 .hero {
     background-color: #121212;
     color: #e0e0e0;
-    min-height: 85vh;
+    min-height: 100vh; /* Full screen height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,160 +121,28 @@ nav ul li a.button:hover {
     overflow: hidden;
 }
 
-.hero-content {
-    max-width: 800px;
-    z-index: 2;
-}
+/* ... (rest of your CSS remains the same) ... */
+.hero-content { z-index: 2; }
+.hero-title { font-size: 4.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+.hero-subtitle { font-size: 1.8rem; background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 10px 0; font-weight: 500; }
+.hero-description { font-size: 1.1rem; max-width: 600px; margin: 20px auto 30px auto; }
+.social-links { text-align: center; margin-top: 30px; }
+.social-links a { color: #e0e0e0; font-size: 1.8rem; margin: 0 15px; transition: color 0.3s, transform 0.3s; }
+.social-links a:hover { color: var(--accent-end); transform: translateY(-5px) scale(1.1); }
+#contact .social-links a { color: #e0e0e0; }
+.card { background-color: #1e1e1e; border-radius: 16px; padding: 35px; margin-bottom: 30px; border: 1px solid #333; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: var(--accent-start); }
+.card h3 { color: #ffffff; }
+.button { display: inline-block; padding: 14px 32px; background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); color: #121212; text-decoration: none; border-radius: 50px; font-weight: 700; border: none; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4); }
+.button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6); }
+footer { text-align: center; padding: 25px; background-color: #1e1e1e; color: #e0e0e0; margin-top: 80px; border-top: 1px solid #333; }
+.hero::before { content: ''; position: absolute; left: var(--mouse-x, 50%); top: var(--mouse-y, 50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0) 70%); border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.2s ease-out; pointer-events: none; z-index: 1; }
+.hidden { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.show { opacity: 1; transform: translateY(0); }
 
-.hero-title {
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0;
-}
-
-.hero-subtitle {
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, #ff8c00, #ffc107);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 10px 0;
-    font-weight: 500;
-}
-
-.hero-description {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 20px auto 30px auto;
-}
-
-/* Social Media Links */
-.social-links {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.social-links a {
-    color: #e0e0e0;
-    font-size: 1.8rem;
-    margin: 0 15px;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-links a:hover {
-    color: #ffc107;
-    transform: translateY(-5px) scale(1.1);
-}
-
-#contact .social-links a {
-    color: #e0e0e0;
-}
-
-/* --- Cards --- */
-.card {
-    background-color: #1e1e1e; /* Lighter dark for cards */
-    border-radius: 16px;
-    padding: 35px;
-    margin-bottom: 30px;
-    border: 1px solid #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: #ff8c00;
-}
-
-.card h3 {
-    color: #ffffff;
-}
-
-/* --- Buttons --- */
-.button {
-    display: inline-block;
-    padding: 14px 32px;
-    background: linear-gradient(90deg, #ff8c00, #ffc107);
-    color: #121212;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4);
-}
-
-.button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6);
-}
-
-/* --- Footer --- */
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-    margin-top: 80px;
-    border-top: 1px solid #333;
-}
-
-/* --- Responsive Styles --- */
 @media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-    
-    .hero-title {
-        font-size: 2.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.3rem;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 15px 0;
-    }
-}
-
-
-/* --- NEW STYLES FOR JAVASCRIPT EFFECTS --- */
-
-/* Hero Section Spotlight Effect */
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 140, 0, 0) 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.2s ease-out;
-    pointer-events: none; /* Allows clicking through the effect */
-    z-index: 1;
-}
-
-.hero-content {
-    z-index: 2; /* Ensures content is above the spotlight */
-}
-
-/* Scroll Animation Styles */
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
+    body { font-size: 16px; }
+    .hero-title { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1.3rem; }
+    nav ul li { display: block; margin: 15px 0; }
 }
