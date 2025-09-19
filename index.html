@@ -36,83 +36,51 @@
     </header>
 
     <section id="projects" class="container">
-        <h2 style="text-align:center;">My Projects</h2>
-        <div class="card">
+        <h2 class="hidden">My Projects</h2>
+        <div class="card hidden">
             <h3>Renewable Energy Predictor</h3>
-            <p>Developed a Random Forest-based forecasting model to predict solar and wind energy output with 85%+ R² accuracy, deployed via an interactive Streamlit dashboard for real-time user inputs and visualizations.</p>
+            <p>Developed a Random Forest-based forecasting model to predict solar and wind energy output with 85%+ R² accuracy, deployed via an interactive Streamlit dashboard.</p>
             <p><strong>Tools Used:</strong> Python, Scikit-learn, Pandas, Streamlit</p>
             <a href="#" class="button" target="_blank">View Code</a>
         </div>
-        <div class="card">
+        <div class="card hidden">
             <h3>Process Scheduler Simulator</h3>
-            <p>Built a Python simulator implementing FCFS, SJF (preemptive & non-preemptive), Priority, and Round Robin scheduling with Gantt chart visualizations and automated calculation of key performance metrics.</p>
+            <p>Built a Python simulator for CPU scheduling algorithms (FCFS, SJF, etc.) with Gantt chart visualizations and automated performance metric calculations.</p>
              <p><strong>Tools Used:</strong> Python, Matplotlib</p>
-            <a href="#" class="button" target="_blank">View Code</a>
-        </div>
-        <div class="card">
-            <h3>AI Chatbot Moderator</h3>
-            <p>Designed an NLP-powered chatbot that leverages regex-based text filtering to identify and block offensive, abusive, or spam content in simulated group chat interactions.</p>
-            <p><strong>Tools Used:</strong> Python, NLP</p>
-            <a href="#" class="button" target="_blank">View Code</a>
-        </div>
-        <div class="card">
-            <h3>News Aggregator</h3>
-            <p>Created a static news reader UI using HTML/CSS, featuring a structured layout for headlines, summaries, and links, serving as a prototype for future API-based dynamic news platforms.</p>
-            <p><strong>Tools Used:</strong> HTML, CSS</p>
-            <a href="#" class="button" target="_blank">View Code</a>
-        </div>
-        <div class="card">
-            <h3>Hall Effect Sensors Simulation</h3>
-            <p>Modeled the Hall Effect principle in Python to classify semiconductors based on magnetic field interactions, simulating current flow, voltage response, and material properties.</p>
-            <p><strong>Tools Used:</strong> Python, NumPy</p>
             <a href="#" class="button" target="_blank">View Code</a>
         </div>
     </section>
 
     <section id="about" class="container">
-        <h2 style="text-align:center;">About Me</h2>
-        <div class="card">
+        <h2 class="hidden">About Me</h2>
+        <div class="card hidden">
             <h3>Hello, I'm Anubhav Kumar</h3>
-            <p>I am an Aspiring Computer Science Engineer currently pursuing my Bachelor's degree at Lovely Professional University. I have a deep passion for technology, particularly in the fields of Artificial Intelligence and Machine Learning, and I enjoy applying my problem-solving skills to build practical and efficient software solutions.</p>
-            <p>My academic foundation is built on core computer science subjects, including Data Structures, Algorithms, Operating Systems, and OOPS. Beyond the classroom, I am proactive in the tech community, where I have experience leading student tech initiatives and managing hackathons & bootcamps. These roles have sharpened my technical and leadership skills, preparing me for a dynamic professional environment.</p>
-        </div>
-        <div class="card">
-            <h3>Technical Skills</h3>
-            <ul>
-                <li><strong>Programming Languages:</strong> C, C++, Python, Java</li>
-                <li><strong>Frontend Development:</strong> HTML, CSS, JavaScript</li>
-                <li><strong>ML/Data Tools:</strong> NumPy, Pandas, scikit-learn, Random Forest, XGBoost, Matplotlib</li>
-                <li><strong>Core CS Concepts:</strong> Data Structures & Algorithms, OOP</li>
-            </ul>
+            <p>I am an Aspiring Computer Science Engineer currently pursuing my Bachelor's degree at Lovely Professional University. My academic foundation is built on core subjects like Data Structures, Algorithms, and AI. Beyond the classroom, I am proactive in the tech community, where I have experience leading student tech initiatives and managing hackathons.</p>
         </div>
     </section>
-    
+
     <section id="achievements" class="container">
-        <h2 style="text-align:center;">Achievements & Certifications</h2>
-        <div class="card">
+        <h2 class="hidden">Achievements & Certifications</h2>
+        <div class="card hidden">
             <h3>Key Achievements</h3>
             <ul>
                 <li>Leading student tech initiatives and managing hackathons & bootcamps.</li>
                 <li>Hackathon Finalist - ML Innovation Prototype (2024).</li>
-                <li>2nd Runner Up (Team) - 24-hour Hackathon (2024).</li>
-                <li>Runner-up - Inter-school Badminton & Kho-Kho competitions.</li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card hidden">
             <h3>Certifications</h3>
             <ul>
                 <li>Machine Learning Made Easy</li>
                 <li>Cloud Computing | NPTEL</li>
-                <li>Python:- Basic to Advance | Udemy</li>
-                <li>Dynamic Communication Skill for Career Success</li>
             </ul>
         </div>
     </section>
 
     <section id="contact" class="container">
-        <h2 style="text-align:center;">Get in Touch</h2>
-         <p class="contact-text" style="text-align:center;">I'm currently seeking new opportunities. Feel free to reach out!</p>
-        <div class="social-links">
+        <h2 class="hidden">Get in Touch</h2>
+         <p class="contact-text hidden" style="text-align:center;">I'm currently seeking new opportunities. Feel free to reach out!</p>
+        <div class="social-links hidden">
              <a href="mailto:anubhavkr0407@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             <a href="https://www.linkedin.com/in/anubhav04a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/anubhav0704" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -124,7 +92,7 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // --- SMOOTH SCROLLING FOR NAVIGATION ---
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -133,6 +101,28 @@
                 });
             });
         });
+
+        // --- NEW: CURSOR SPOTLIGHT EFFECT IN HERO SECTION ---
+        const heroSection = document.querySelector('.hero');
+        heroSection.addEventListener('mousemove', e => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            heroSection.style.setProperty('--mouse-x', `${x}px`);
+            heroSection.style.setProperty('--mouse-y', `${y}px`);
+        });
+
+        // --- NEW: FADE-IN ANIMATIONS ON SCROLL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     </script>
 
 </body>
